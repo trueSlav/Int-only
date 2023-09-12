@@ -7,10 +7,9 @@
 	--index: calc(1vw + 1vh);
 
 	--color-text: #fff;
-	--rnd-blue: rgba(58, 121, 238, 0.702);
+	--rnd-blue: #3a79eeb3;
 	--rnd-green: #69bf4ab3;
 
-	--elem-display: block;
 }
 body{
 	overflow: hidden;
@@ -22,70 +21,95 @@ body{
 }
 
 .hero-section{
+	position: relative;
 	height: 100vh;
+	width: 100vw;
 	background: url(../img/main_bg.jpg) no-repeat 50%/cover;
 }
 
 
-/* Round */
-.hero-section .hero-section__round {
-	position: relative;
+/* Round - btn */
+.hero-section__div {
+	position: absolute;
 	min-width: 40px;
 	height: 40px;
+	z-index: 10;
+}
+
+.hero-section .hero-section__round {
+	position: relative;
+	display: block;
+	min-width: 40px;
+	height: 100%;
 
 	border-radius: 100%;
 	cursor: pointer;
 	border: none;
-	
-	z-index: 10000000;
-	
+
 	transition: .3s all;
 }
 .hero-section .hero-section__round.active {
 	height: 40px;
-	padding: 11px 15px;
-
 	border-radius: 40px;
-	z-index: 10000000;
+	z-index: 10;
 }
 .rnd_blue {
 	background-color: var(--rnd-blue);
 }
-.active-color-blue {
-	background-color: #3877EE;
-}
 .hero-section .hero-section__round.rnd_green {
 	background-color: var(--rnd-green);
 }
-.active-color-green {
-	background-color: #6ABF4B;
+
+
+/* Minus */
+.hero-section .hero-section__minus {
+	opacity: 0;
+}
+.hero-section .hero-section__minus::after{
+	content: '';
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 10px;
+	height: 2px;
+	background-color:#fff;
+}
+
+
+/* Text button */
+.hero-section .hero-section__round p {
+	color: var(--color-text);
+	position: relative;
+	right: 10px;
+	top: -28px;
+	text-align: right;
+	font-size: 14px;
+	font-weight: 400;
+	display: none;
+	margin-left: 55px;
+	position: relative;
+	z-index: -1;
 }
 
 
 /* Plus */
 .hero-section .hero-section__plus{
-	position: absolute;
-	top: 20px;
-	left: 20px;
+	width: 100%;
+	height: 100%;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	color: var(--color-text);
-	z-index: -1;
-
-	/* display: block */
+	opacity: 1;
 }
 .hero-section .hero-section__plus::before {
 	content: '';
-	position: absolute;
 	width: 2px;
 	height: 10px;
 	background-color:#fff;
-	z-index: -10;
 }
-
 .hero-section .hero-section__plus::after {
 	content: '';
 	position: absolute ;
@@ -94,77 +118,47 @@ body{
 	width: 10px;
 	height: 2px;
 	background-color:#fff;
-	z-index: -10000000;
-}
-.hero-section .hero-section__minus{
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	width: 10px;
-	height: 2px;
-	background-color:#fff;
-	z-index: -10000000;
-	display: none;
 }
 
-/* Text button */
-.hero-section .hero-section__round p {
-	color: var(--color-text);
-	text-align: right;
-	font-size: 14px;
-	font-weight: 400;
-	display: none;
-	margin-left: 25px;
-	z-index: -10000000;
-}
 
+/* Position */
 #item1 {
-	position: absolute;
-	top: calc(var(--index) * 8);
+	top: calc(var(--index) * 9);
 	left: calc(var(--index) * 18);
 }
 #item2 {
-	position: absolute;
 	top: calc(var(--index) * 23);
 	left: calc(var(--index) * 14);
 }
 #item3 {
-	position: absolute;
-	top: calc(var(--index) * 19);
-	left: calc(var(--index) * 37);
+	top: calc(var(--index) * 20);
+	left: calc(var(--index) * 36);
 }
 #item4 {
-	position: absolute;
-	top: calc(var(--index) * 5);
-	left: calc(var(--index) * 48);
+	top: calc(var(--index) * 6);
+	left: calc(var(--index) * 46);
 }
 #item5 {
-	position: absolute;
-	top: calc(var(--index) * 15);
+	top: calc(var(--index) * 16);
 	left: calc(var(--index) * 48);
 }
 #item6 {
-	position: absolute;
-	top: calc(var(--index) * 23);
+	top: calc(var(--index) * 24);
 	left: calc(var(--index) * 55);
 }
 #item7 {
-	position: absolute;
-	top: calc(var(--index) * 14);
+	top: calc(var(--index) * 15);
 	left: calc(var(--index) * 23);
 }
 #item8 {
-	position: absolute;
-	top: calc(var(--index) * 12);
+	top: calc(var(--index) * 14);
 	left: calc(var(--index) * 39);
 }
 #item9 {
-	position: absolute;
-	top: calc(var(--index) * 21);
+	top: calc(var(--index) * 22);
 	left: calc(var(--index) * 45);
 }
 #item10 {
-	position: absolute;
-	top: calc(var(--index) * 26);
-	left: calc(var(--index) * 38);
+	top: calc(var(--index) * 27);
+	left: calc(var(--index) * 37);
 }

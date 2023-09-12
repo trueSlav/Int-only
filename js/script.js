@@ -8,90 +8,74 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	const closeBtn = (i) => {
 		button[i].classList.remove('active');
+
+		if(button[i].classList.contains('rnd_blue')){
+			button[i].style.backgroundColor = 'rgba(56, 119, 238, .7)';
+		}
+
+		if(button[i].classList.contains('rnd_green')) {
+			button[i].style.backgroundColor = 'rgba(106, 191, 75, .7)';
+		}
+		
 		btnText[i].style.display = 'none';
 
-		if(plus[i].style.display === 'none'){
-			minus[i].style.display = 'none';
-			plus[i].style.display = 'flex';
+		if(plus[i].style.opacity === '0'){
+			minus[i].style.opacity = '0';
+			plus[i].style.opacity = '1';
 		}
+
 	}
+
 	const swithColor = (i) => {
-		// if(button[i].classList.contains('rnd_blue')){
-		// 	button[i].classList.remove('rnd_blue');
-		// 	button[i].classList.add('active-color-blue');
-		// } else if(!button[i].classList.contains('rnd_blue')){
-		// 	button[i].classList.remove('active-color-blue');
-		// 	button[i].classList.add('rnd_blue');
-		// } else if(button[i].classList.contains('rnd_green')){
-		// 	button[i].classList.remove('rnd_green');
-		// 	button[i].classList.add('active-color-green');
-		// } else if(!button[i].classList.contains('rnd_green')){
-		// 	button[i].classList.remove('active-color-green');
-		// 	button[i].classList.add('rnd_green');
-		// }
 
-		// if(button[i].classList.contains('rnd_blue')){
-		// 	button[i].classList.remove('rnd_blue');
-		// 	button[i].classList.add('active-color-blue');
-			
-		// } else {
-		// 	button[i].classList.remove('active-color-blue');
-		// 	button[i].classList.add('rnd_blue');
-		// }
+		if(button[i].classList.contains('rnd_blue')){
+			button[i].style.backgroundColor = (button[i].style.backgroundColor === 'rgb(56, 119, 238)') ? 'rgba(56, 119, 238, .7)' : 'rgb(56, 119, 238)';
+		}
 
-		// if(button[i].classList.contains('rnd_green')){
-		// 	button[i].classList.remove('rnd_green');
-		// 	button[i].classList.add('active-color-green');
-		// } else {
-		// 	button[i].classList.remove('active-color-green');
-		// 	button[i].classList.add('rnd_green');
-		// }
-
-		// if(button[i].classList.contains('rnd_blue')){
-		// 	button[i].style.backgroundColor = '#3877EE';
-		// } else if(button[i].style.backgroundColor == 'rgb(56, 119, 238)'){
-		// 	console.log('qweqwe');
-		// 	button[i].style.backgroundColor = '#3a79eeb3';
-		// }
-
-		// button[i].style.backgroundColor = (button[i].classList.contains('rnd_blue')) ? '#3877EE' : '#3a79eeb3';
-
+		if(button[i].classList.contains('rnd_green')) {
+			button[i].style.backgroundColor = (button[i].style.backgroundColor === 'rgb(106, 191, 75)') ? 'rgba(106, 191, 75, .7)' : 'rgb(106, 191, 75)';
+		}
 
 	}
+
 	const toggleBtn = (i) => {
 
 		button[i].classList.toggle('active');
+
 		btnText[i].style.display = (btnText[i].style.display != 'block') ? 'block' : 'none';
-
-		if (plus[i].style.display != 'none') {
-			plus[i].style.display = 'none';
-			minus[i].style.display = 'block';
-		} else if(plus[i].style.display === 'none'){
-			minus[i].style.display = 'none';
-			plus[i].style.display = 'flex';
-		}
-
-		swithColor(i)
+		
+		plus[i].style.opacity = (plus[i].style.opacity != '0') ? '0' : '1';
+		minus[i].style.opacity = (minus[i].style.opacity != '1') ? '1' : '0';
+		
+		swithColor(i);
 
 	}
 
-	wrapper.addEventListener('click', e => {
-		console.log(e.target);
+	const openBtn = () => {
 
-		if(e.target && e.target.classList.contains('hero-section__div')){
-			button.forEach((element, i) => {
-				if(e.target == element){
-					toggleBtn(i);
-				}
-			});
-		} 
+		wrapper.addEventListener('click', e => {
+			const target = e.target;
+	
+			if(target && (target.classList.contains('hero-section__round') || target.classList.contains('hero-section__plus'))){
+	
+					plus.forEach((element, i) => {
+						if(target === element){
+							toggleBtn(i);
+						}
+					})
+	
+			}
+	
+			if(e.target && e.target.classList.contains('wrapper')){
+				button.forEach((element, i) => {
+					closeBtn(i);
+				});
+			}
+	
+		});
 
-		if(e.target && e.target.classList.contains('wrapper')){
-			button.forEach((element, i) => {
-				closeBtn(i);
-			});
-		}
+	}
 
-	});
+	openBtn();
 
 })
